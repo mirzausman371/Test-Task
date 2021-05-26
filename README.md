@@ -1,3 +1,0 @@
-# BRAINAUT
-
-`yarn && yarn start`
