@@ -24,4 +24,4 @@ In the future, it is possible that a protocol-wide charge of 0.05% per trade wil
 
 This amount would not affect the fee paid by traders, but would affect the amount received by liquidity providers.
 
-Rather than calculating this charge on swaps, which would significantly increase gas costs for all users, the charge is instead calculated when liquidity is added or removed. See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.
+Rather than calculating this charge on swaps, which would significantly increase gas costs for all users, the charge is instead calculated when liquidity is added or removed. See the <a href='#' target='_blank' rel='noopener noreferrer'>whitepaper</a> for more details.

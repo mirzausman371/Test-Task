@@ -7,12 +7,12 @@ tags: sdk, documentation
 constructor(tokenAmountA: TokenAmount, tokenAmountB: TokenAmount)
 ```
 
-The Pair entity represents a Kwikswap pair with a balance of each of its pair tokens.
+The Pair entity represents a Brainaut pair with a balance of each of its pair tokens.
 
 # Example
 
 ```typescript
-import { ChainId, Token, TokenAmount, Pair } from '@kwikswap/sdk'
+import { ChainId, Token, TokenAmount, Pair } from '@simocos/sdk'
 
 const HOT = new Token(ChainId.MAINNET, '0xc0FFee0000000000000000000000000000000000', 18, 'HOT', 'Caffeine')
 const NOT = new Token(ChainId.MAINNET, '0xDeCAf00000000000000000000000000000000000', 18, 'NOT', 'Caffeine')
@@ -38,7 +38,7 @@ Computes the pair address for the passed <Link to='/docs/v1/SDK/token'>Token</Li
 liquidityToken: Token
 ```
 
-A Token representing the liquidity token for the pair. See <Link to='/docs/v1/smart-contracts/pair-erc-20'>Pair (ERC-20)</Link>.
+A Token representing the liquidity token for the pair. See <Link to='/docs/v1/smart-contracts/pair-bep-20'>Pair (BEP-20)</Link>.
 
 ## token0
 

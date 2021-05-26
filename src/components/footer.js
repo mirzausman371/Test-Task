@@ -137,7 +137,7 @@ const Footer = () => {
       <StyledSection>
         <StyledFooterSection>
           <EmailSection />
-          <p>© 2020 Kwikswap</p>
+          <p>© 2021 Brainaut</p>
         </StyledFooterSection>
       </StyledSection>
     </StyledFooter>
@@ -218,7 +218,7 @@ const EmailSection = () => {
       <p>Subscribe to our newsletter for updates</p>
 
       <EmailRow
-        action="admin@kwikswap.org"
+        action="admin@brainaut.net"
         method="post"
         id="mc-embedded-subscribe-form"
         name="mc-embedded-subscribe-form"

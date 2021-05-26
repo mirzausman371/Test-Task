@@ -100,7 +100,7 @@ Responsible for formatting percentages (10% instead of 0.1).
 ## Example
 
 ```typescript
-import { Percent } from '@kwikswap/sdk'
+import { Percent } from '@simocos/sdk'
 
 const percent = new Percent('60', '100')
 console.log(percent.toSignificant(2)) // 60
@@ -125,7 +125,7 @@ Responsible for formatting token amounts with specific decimal places.
 ## Example
 
 ```typescript
-import { Token, TokenAmount } from '@kwikswap/sdk'
+import { Token, TokenAmount } from '@simocos/sdk'
 
 const FRIED = new Token(ChainId.MAINNET, '0xfa1aFe1000000000000000000000000000000000', 18, 'FRIED', 'Beans')
 
@@ -188,16 +188,16 @@ Responsible for denominating the relative price between two tokens. Denominator 
 ## Example
 
 ```typescript
-import { ChainId, WETH as WETHs, Token, Price } from '@kwikswap/sdk'
+import { ChainId, WBNB as WBNBs, Token, Price } from '@simocos/sdk'
 
-const WETH = WETHs[ChainId.MAINNET]
+const WBNB = WBNBs[ChainId.MAINNET]
 const ABC = new Token(ChainId.MAINNET, '0xabc0000000000000000000000000000000000000', 18, 'ABC')
 
-const price = new Price(WETH, ABC, '1000000000000000000', '123000000000000000000')
+const price = new Price(WBNB, ABC, '1000000000000000000', '123000000000000000000')
 console.log(price.toSignificant(3)) // 123
 ```
 
-This example shows the ETH/XYZ price, where ETH is the base token, and XYZ is the quote token. The price is constructed from an amount of XYZ (the numerator) / an amount of WETH (the denominator).
+This example shows the BNB/XYZ price, where BNB is the base token, and XYZ is the quote token. The price is constructed from an amount of XYZ (the numerator) / an amount of WBNB (the denominator).
 
 ## Static Methods
 

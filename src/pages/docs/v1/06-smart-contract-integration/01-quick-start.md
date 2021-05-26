@@ -3,11 +3,11 @@ title: Smart Contract Quick start
 tags: smart contract integration, documentation, quick start
 ---
 
-Developing smart contracts for Ethereum involves a bevy of off-chain tools used for producing and testing bytecode 
-that runs on the [Ethereum Virtual Machine (EVM)](https://eth.wiki/en/concepts/evm/ethereum-virtual-machine-(evm)-awesome-list).
-Some tools also include workflows for deploying this bytecode to the Ethereum network and testnets.
+Developing smart contracts for Binance Smart Chain involves a bevy of off-chain tools used for producing and testing bytecode 
+that runs on the [Binance Smart Chain Virtual Machine (BVM)](https://eth.wiki/en/concepts/evm/ethereum-virtual-machine-(evm)-awesome-list).
+Some tools also include workflows for deploying this bytecode to the Binance Smart Chain network and testnets.
 There are many options for these tools. This guide walks you through writing and testing a simple smart contract that
-interacts with the Kwikswap Protocol using one specific set of tools (`truffle` + `npm` + `mocha`).
+interacts with the Brainaut Protocol using one specific set of tools (`truffle` + `npm` + `mocha`).
 
 ## Requirements
 
@@ -29,7 +29,7 @@ npx truffle init
 
 ## Setting up npm
 
-In order to reference the Kwikswap contracts, you should use the npm artifacts we deploy containing the core and
+In order to reference the Brainaut contracts, you should use the npm artifacts we deploy containing the core and
 periphery smart contracts and interfaces. To add npm dependencies, we first initialize the npm package. 
 We can run `npm init` in the same directory to create a `package.json` file. You can accept all the defaults and
 change it later.
@@ -41,24 +41,24 @@ npm init
 ## Adding dependencies
 
 Now that we have an npm package, we can add our dependencies. Let's add both the 
-[`@kwikswap/v1-core`](https://www.npmjs.com/package/@kwikswap/v1-core) and 
-[`@kwikswap/v1-periphery`](https://www.npmjs.com/package/@kwikswap/v1-periphery) packages.
+[`@simocos/v1-core`](https://www.npmjs.com/package/@simocos/v1-core) and 
+[`@simocos/v1-periphery`](https://www.npmjs.com/package/@simocos/v1-periphery) packages.
 
 ```shell script
-npm i --save @kwikswap/v1-core
-npm i --save @kwikswap/v1-periphery
+npm i --save @simocos/v1-core
+npm i --save @simocos/v1-periphery
 ```
 
-If you check the `node_modules/@kwikswap` directory, you can now find the Kwikswap contracts. 
+If you check the `node_modules/@simocos` directory, you can now find the Brainaut contracts. 
 
 ```shell script
-moody@MacBook-Pro ~/I/u/demo> ls node_modules/@kwikswap/v1-core/contracts
-KwikswapV1ERC20.sol    KwikswapV1Pair.sol     libraries/
-KwikswapV1Factory.sol  interfaces/           test/
-moody@MacBook-Pro ~/I/u/demo> ls node_modules/@kwikswap/v1-periphery/contracts/
-KwikswapV1Migrator.sol  examples/              test/
-KwikswapV1Router01.sol  interfaces/
-KwikswapV1Router02.sol  libraries/
+moody@MacBook-Pro ~/I/u/demo> ls node_modules/@simocos/v1-core/contracts
+BrainautV1BEP20.sol    BrainautV1Pair.sol     libraries/
+BrainautV1Factory.sol  interfaces/           test/
+moody@MacBook-Pro ~/I/u/demo> ls node_modules/@simocos/v1-periphery/contracts/
+BrainautV1Migrator.sol  examples/              test/
+BrainautV1Router01.sol  interfaces/
+BrainautV1Router02.sol  libraries/
 ```
 
 These packages include both the smart contract source code and the build artifacts.
@@ -86,7 +86,7 @@ interface ILiquidityValueCalculator {
 }
 ```
 
-Now let's start with the constructor. You need to know where the `KwikswapV1Factory` is deployed in order to compute the
+Now let's start with the constructor. You need to know where the `BrainautV1Factory` is deployed in order to compute the
 address of the pair and look up the total supply of liquidity shares, plus the amounts for the reserves. 
 We can store this as an address passed to the constructor.
 
@@ -115,18 +115,18 @@ Let's put this in a separate function. To implement it, we must:
 3. Get the total supply of the pair liquidity
 4. Sort the reserves in the order of tokenA, tokenB 
 
-The [`KwikswapV1Library`](/docs/v1/smart-contracts/library/) has some helpful methods for this.
+The [`BrainautV1Library`](/docs/v1/smart-contracts/library/) has some helpful methods for this.
 
 ```solidity
 pragma solidity ^0.6.6;
 
 import './interfaces/ILiquidityValueCalculator.sol';
-import '@kwikswap/v1-periphery/contracts/libraries/KwikswapV1Library.sol';
-import '@kwikswap/v1-core/contracts/interfaces/IKwikswapV1Pair.sol';
+import '@simocos/v1-periphery/contracts/libraries/BrainautV1Library.sol';
+import '@simocos/v1-core/contracts/interfaces/IBrainautV1Pair.sol';
 
 contract LiquidityValueCalculator is ILiquidityValueCalculator {
     function pairInfo(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB, uint totalSupply) {
-        IKwikswapV1Pair pair = IKwikswapV1Pair(KwikswapV1Library.pairFor(factory, tokenA, tokenB));
+        IBrainautV1Pair pair = IBrainautV1Pair(BrainautV1Library.pairFor(factory, tokenA, tokenB));
         totalSupply = pair.totalSupply();
         (uint reserves0, uint reserves1,) = pair.getReserves();
         (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
@@ -140,8 +140,8 @@ Finally we just need to compute the share value. We will leave that as an exerci
 pragma solidity ^0.6.6;
 
 import './interfaces/ILiquidityValueCalculator.sol';
-import '@kwikswap/v1-periphery/contracts/libraries/KwikswapV1Library.sol';
-import '@kwikswap/v1-core/contracts/interfaces/IKwikswapV1Pair.sol';
+import '@simocos/v1-periphery/contracts/libraries/BrainautV1Library.sol';
+import '@simocos/v1-core/contracts/interfaces/IBrainautV1Pair.sol';
 
 contract LiquidityValueCalculator is ILiquidityValueCalculator {
     address public factory;
@@ -150,7 +150,7 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
     }
 
     function pairInfo(address tokenA, address tokenB) internal view returns (uint reserveA, uint reserveB, uint totalSupply) {
-        IKwikswapV1Pair pair = IKwikswapV1Pair(KwikswapV1Library.pairFor(factory, tokenA, tokenB));
+        IBrainautV1Pair pair = IBrainautV1Pair(BrainautV1Library.pairFor(factory, tokenA, tokenB));
         totalSupply = pair.totalSupply();
         (uint reserves0, uint reserves1,) = pair.getReserves();
         (reserveA, reserveB) = tokenA == pair.token0() ? (reserves0, reserves1) : (reserves1, reserves0);
@@ -167,8 +167,8 @@ contract LiquidityValueCalculator is ILiquidityValueCalculator {
 In order to test your contract, you need to:
 
 1. Bring up a testnet
-2. Deploy the `KwikswapV1Factory`
-3. Deploy at least 2 ERC20 tokens for a pair
+2. Deploy the `BrainautV1Factory`
+3. Deploy at least 2 BEP20 tokens for a pair
 4. Create a pair for the factory
 5. Deploy your `LiquidityValueCalculator` contract
 6. Call `LiquidityValueCalculator#computeLiquidityShareValue`
@@ -176,20 +176,20 @@ In order to test your contract, you need to:
 
 \#1 is handled for you automatically by the `truffle test` command.
 
-Note you should only deploy the precompiled Kwikswap contracts in the `build` directories for unit tests. 
+Note you should only deploy the precompiled Brainaut contracts in the `build` directories for unit tests. 
 This is because solidity appends a metadata hash to compiled contract artifacts which includes the hash of the contract
 source code path, and compilations on other machines will not result in the exact same bytecode.
-This is problematic because in Kwikswap we use the hash of the bytecode in the v1-periphery
-[`KwikswapV1Library`](https://github.com/Kwikswap/Kwikswap-V1-Periphery/blob/master/contracts/libraries/KwikswapV1Library.sol#L24),
+This is problematic because in Brainaut we use the hash of the bytecode in the v1-periphery
+[`BrainautV1Library`](https://github.com/Brainaut/Brainaut-V1-Periphery/blob/master/contracts/libraries/BrainautV1Library.sol#L24),
 to compute the pair address.
 
-To get the bytecode for deploying KwikswapV1Factory, you can import the file via:
+To get the bytecode for deploying BrainautV1Factory, you can import the file via:
 
 ```javascript
-const KwikswapV1FactoryBytecode = require('@kwikswap/v1-core/build/KwikswapV1Factory.json').bytecode
+const BrainautV1FactoryBytecode = require('@simocos/v1-core/build/BrainautV1Factory.json').bytecode
 ```
 
-We recommend using a standard ERC20 from `@openzeppelin/contracts` for deploying an ERC20.
+We recommend using a standard BEP20 from `@openzeppelin/contracts` for deploying an BEP20.
 
 You can read more about deploying contracts and writing tests using Truffle 
 [here](https://www.trufflesuite.com/docs/truffle/testing/writing-tests-in-javascript).

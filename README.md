@@ -1,3 +1,3 @@
-# KWIKSWAP
+# BRAINAUT
 
 `yarn && yarn start`

@@ -1,103 +1,103 @@
 {
-  "index_name": "kwikswap_v1_docs",
+  "index_name": "brainaut_v1_docs",
   "start_urls": [
     {
-      "url": "https://beta.kwikswap.org/docs/v1/",
+      "url": "https://beta.brainaut.net/docs/v1/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/protocol-overview/how-kwikswap-works/",
-      "extra_attributes": {
-        "version": ["v1"]
-      }
-    },
-
-    {
-      "url": "https://beta.kwikswap.org/docs/v1/protocol-overview/ecosystem-participants/",
+      "url": "https://beta.brainaut.net/docs/v1/protocol-overview/how-brainaut-works/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
 
     {
-      "url": "https://beta.kwikswap.org/docs/v1/protocol-overview/smart-contracts/",
+      "url": "https://beta.brainaut.net/docs/v1/protocol-overview/ecosystem-participants/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
 
     {
-      "url": "https://beta.kwikswap.org/docs/v1/protocol-overview/glossary/",
+      "url": "https://beta.brainaut.net/docs/v1/protocol-overview/smart-contracts/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
 
     {
-      "url": "https://beta.kwikswap.org/docs/v1/core-concepts/swaps/",
+      "url": "https://beta.brainaut.net/docs/v1/protocol-overview/glossary/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
 
     {
-      "url": "https://beta.kwikswap.org/docs/v1/core-concepts/pools/",
+      "url": "https://beta.brainaut.net/docs/v1/core-concepts/swaps/",
+      "extra_attributes": {
+        "version": ["v1"]
+      }
+    },
+
+    {
+      "url": "https://beta.brainaut.net/docs/v1/core-concepts/pools/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/core-concepts/oracles/",
+      "url": "https://beta.brainaut.net/docs/v1/core-concepts/oracles/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/advanced-topics/fees/",
+      "url": "https://beta.brainaut.net/docs/v1/advanced-topics/fees/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/advanced-topics/pricing/",
+      "url": "https://beta.brainaut.net/docs/v1/advanced-topics/pricing/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/advanced-topics/understanding-returns/",
+      "url": "https://beta.brainaut.net/docs/v1/advanced-topics/understanding-returns/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/advanced-topics/security/",
+      "url": "https://beta.brainaut.net/docs/v1/advanced-topics/security/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/advanced-topics/math/",
+      "url": "https://beta.brainaut.net/docs/v1/advanced-topics/math/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/advanced-topics/research/",
+      "url": "https://beta.brainaut.net/docs/v1/advanced-topics/research/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/API/entities/",
+      "url": "https://beta.brainaut.net/docs/v1/API/entities/",
       "extra_attributes": {
         "version": ["v1"]
       }
     },
     {
-      "url": "https://beta.kwikswap.org/docs/v1/API/queries/",
+      "url": "https://beta.brainaut.net/docs/v1/API/queries/",
       "extra_attributes": {
         "version": ["v1"]
       }

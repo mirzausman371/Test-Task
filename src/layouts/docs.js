@@ -200,7 +200,7 @@ const Docs = props => {
             <SEO
               key={node.fields.slug}
               title={props.pageContext.frontmatter.title}
-              site={'Kwikswap ' + title}
+              site={'Brainaut ' + title}
               path={props.location.pathname}
               description={node.excerpt}
             />
@@ -283,11 +283,11 @@ const Docs = props => {
                     {node.fields.slug === '/docs/v1/' && (
                       <StyledLink
                         style={{ alignItems: 'flex-start' }}
-                        to={'/docs/v1/protocol-overview/how-kwikswap-works/'}
+                        to={'/docs/v1/protocol-overview/how-brainaut-works/'}
                         rel="next"
                       >
                         <small>Next</small>
-                        <span>How Kwikswap works →</span>
+                        <span>How Brainaut works →</span>
                       </StyledLink>
                     )}
                   </StyledDocsNav>

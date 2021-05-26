@@ -2,7 +2,7 @@ import ApolloClient from 'apollo-boost'
 import fetch from 'isomorphic-fetch'
 
 export const client = new ApolloClient({
-  uri: 'https://api.thegraph.com/subgraphs/name/kwikswap/kwikswap-subgraph',
+  uri: 'https://api.thegraph.com/subgraphs/name/brainaut/brainaut-subgraph',
   fetch
 })
 

@@ -3,24 +3,24 @@ title: Entities
 tags: api, documentation
 ---
 
-Entities define the schema of the subgraph, and represent the data that can be queried. Within each entity are sets of fields that store useful information related to the entity. Below is a list of the available entities within the Kwikswap Subgraph, and descriptions for the available fields.
+Entities define the schema of the subgraph, and represent the data that can be queried. Within each entity are sets of fields that store useful information related to the entity. Below is a list of the available entities within the Brainaut Subgraph, and descriptions for the available fields.
 
-To see an interactive sandbox of all entities see the [Graph Explorer](https://thegraph.com/explorer/subgraph/kwikswap/kwikswap-subgraph).
+To see an interactive sandbox of all entities see the [Graph Explorer](https://thegraph.com/explorer/subgraph/brainaut/brainaut-subgraph).
 
 Each entity is defined with a value type, which will always be a base AssemblyScript type, or a custom type provided by The Graph's custom TypeScript library. For more information on value types see [here](https://thegraph.com/docs/assemblyscript-api#api-reference).
 
-### Kwikswap Factory
+### Brainaut Factory
 
-The Kwikswap Factory entity is responsible for storing aggregate information across all Kwikswap pairs. It can be used to view stats about total liquidity, volume, amount of pairs and more. There is only one KwikswapFactory entity in the subgraph.
+The Brainaut Factory entity is responsible for storing aggregate information across all Brainaut pairs. It can be used to view stats about total liquidity, volume, amount of pairs and more. There is only one BrainautFactory entity in the subgraph.
 
 | Field Name        | Value Type | Description                                                     |
 | ----------------- | ---------- | --------------------------------------------------------------- |
 | id                | ID         | factory address                                                 |
-| pairCount         | Int        | amount of pairs created by the Kwikswap factory                  |
+| pairCount         | Int        | amount of pairs created by the Brainaut factory                  |
 | totalVolumeUSD    | BigDecimal | all time USD volume across all pairs (USD is derived)           |
-| totalVolumeETH    | BigDecimal | all time volume in ETH across all pairs (ETH is derived)        |
+| totalVolumeBNB    | BigDecimal | all time volume in BNB across all pairs (BNB is derived)        |
 | totalLiquidityUSD | BigDecimal | total liquidity across all pairs stored as a derived USD amount |
-| totalLiquidityETH | BigDecimal | total liquidity across all pairs stored as a derived ETH amount |
+| totalLiquidityBNB | BigDecimal | total liquidity across all pairs stored as a derived BNB amount |
 | txCount           | BigInt     | all time amount of transactions across all pairs                |
 
 
@@ -31,15 +31,15 @@ Information about a pair. Includes references to each token within the pair, vol
 | Field Name           | Value Type          | Description                                                                                                         |
 | -------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | id                   | ID                  | pair contract address                                                                                               |
-| factory              | KwikswapFactory      | reference to Kwikswap factory entity                                                                                 |
+| factory              | BrainautFactory      | reference to Brainaut factory entity                                                                                 |
 | token0               | Token               | reference to token0 as stored in pair contract                                                                      |
 | token1               | Token               | reference to token1 as stored in pair contract                                                                      |
 | reserve0             | BigDecimal          | reserve of token0                                                                                                   |
 | reserve1             | BigDecimal          | reserve of token1                                                                                                   |
 | totalSupply          | BigDecimal          | total supply of liquidity token distributed to LPs                                                                  |
-| reserveETH           | BigDecimal          | total liquidity in pair stored as an amount of ETH                                                                  |
+| reserveBNB           | BigDecimal          | total liquidity in pair stored as an amount of BNB                                                                  |
 | reserveUSD           | BigDecimal          | total liquidity amount in pair stored as an amount of USD                                                           |
-| trackedReserveETH    | BigDecimal          | total liquidity with only tracked amount (see tracked amounts)                                                      |
+| trackedReserveBNB    | BigDecimal          | total liquidity with only tracked amount (see tracked amounts)                                                      |
 | token0Price          | BigDecimal          | token0 per token1                                                                                                   |
 | token1Price          | BigDecimal          | token1 per token0                                                                                                   |
 | volumeToken0         | BigDecimal          | amount of token0 swapped on this pair                                                                               |
@@ -48,7 +48,7 @@ Information about a pair. Includes references to each token within the pair, vol
 | untrackedVolumeUSD   | BigDecimal          | total amount swapped all time in this pair stored in USD, no minimum liquidity threshold                            |
 | txCount              | BigInt              | all time amount of transactions on this pair                                                                        |
 | createdAtTimestamp   | BigInt              | timestamp contract was created                                                                                      |
-| createdAtBlockNumber | BigInt              | Ethereum block contract was created                                                                                 |
+| createdAtBlockNumber | BigInt              | Binance Smart Chain block contract was created                                                                                 |
 | liquidityPositions   | [LiquidityPosition] | array of liquidity providers, used as a reference to LP entities                                                    |
 
 
@@ -67,7 +67,7 @@ Stores aggregated information for a specific token across all pairs that token i
 | untrackedVolumeUSD | BigDecimal | amount of token in USD traded all time across pairs (no minimum liquidity threshold)                         |
 | txCount            | BigInt     | amount of transactions all time in pairs including token                                                     |
 | totalLiquidity     | BigDecimal | total amount of token provided as liquidity across all pairs                                                 |
-| derivedETH         | BigDecimal | ETH per token                                                                                                |
+| derivedBNB         | BigDecimal | BNB per token                                                                                                |
 
 
 ### LiquidityPositiion
@@ -85,11 +85,11 @@ information from the pair itself can be used to provide position sizes, token de
 
 ### Transaction
 
-Transaction entities are created for each Ethereum transaction that contains an interaction within Kwikswap contracts. This subgraph tracks Mint, Burn, and Swap events on the Kwikswap core contracts. Each transaction contains 3 arrays, and at least one of these arrays has a length of 1.
+Transaction entities are created for each Binance Smart Chain transaction that contains an interaction within Brainaut contracts. This subgraph tracks Mint, Burn, and Swap events on the Brainaut core contracts. Each transaction contains 3 arrays, and at least one of these arrays has a length of 1.
 
 | Field Name  | Value Type | Description                                               |
 | ----------- | ---------- | --------------------------------------------------------- |
-| id          | ID         | Ethereum transaction hash                                 |
+| id          | ID         | Binance Smart Chain transaction hash                                 |
 | blockNumber | BigInt     | block transaction was mined in                            |
 | timestamp   | BigInt     | timestamp for transaction                                 |
 | mints       | [Mint]     | array of Mint events within the transaction, 0 or greater |
@@ -99,7 +99,7 @@ Transaction entities are created for each Ethereum transaction that contains an 
 
 ### User
 
-A user entity is created for any address that provides liquidity to a pool on Kwikswap. This entity
+A user entity is created for any address that provides liquidity to a pool on Brainaut. This entity
 can be used to track open positions for users. LiquidyPosition entities can be referenced to get
 specific data about each position.
 
@@ -112,7 +112,7 @@ specific data about each position.
 
 ### Burn
 
-Burn entities are created for every emitted Burn event on the Kwikswap core contracts. The Burn entity stores key data about the event like token amounts, who burned LP tokens, who received tokens, and more. This entity can be used to track liquidity removals on pairs.
+Burn entities are created for every emitted Burn event on the Brainaut core contracts. The Burn entity stores key data about the event like token amounts, who burned LP tokens, who received tokens, and more. This entity can be used to track liquidity removals on pairs.
 
 | Field Name   | Value Type  | Description                                               |
 | ------------ | ----------- | --------------------------------------------------------- |
@@ -133,7 +133,7 @@ Burn entities are created for every emitted Burn event on the Kwikswap core cont
 
 ### Mint
 
-Mint entities are created for every emitted Mint event on the Kwikswap core contracts. The Mint entity stores key data about the event like token amounts, who sent the transaction, who received the liquidity, and more. This entity can be used to track liquidity provisions on pairs.
+Mint entities are created for every emitted Mint event on the Brainaut core contracts. The Mint entity stores key data about the event like token amounts, who sent the transaction, who received the liquidity, and more. This entity can be used to track liquidity provisions on pairs.
 
 | Field Name   | Value Type  | Description                                                 |
 | ------------ | ----------- | ----------------------------------------------------------- |
@@ -154,15 +154,15 @@ Mint entities are created for every emitted Mint event on the Kwikswap core cont
 
 ### Bundle
 
-The Bundle is used as a global store of derived ETH price in USD. Because there is
+The Bundle is used as a global store of derived BNB price in USD. Because there is
 no guaranteed common base token across pairs, a global reference of USD price is useful
-for deriving other USD values. The Bundle entity stores an updated weighted average of ETH<->Stablecoin pair prices. This provides a strong estimate for the USD price of ETH that can
+for deriving other USD values. The Bundle entity stores an updated weighted average of BNB<->Stablecoin pair prices. This provides a strong estimate for the USD price of BNB that can
 be used in other places in the subgraph.
 
 | Field Name | Value Type | Description                                           |
 | ---------- | ---------- | ----------------------------------------------------- |
 | id         | ID         | constant 1                                            |
-| ethPrice   | BigDecimal | derived price of ETH in USD based on stablecoin pairs |
+| ethPrice   | BigDecimal | derived price of BNB in USD based on stablecoin pairs |
 
 
 ### Swap
@@ -186,7 +186,7 @@ for more information on amounts.
 | amountUSD   | BigDecimal  | derived amount of tokens sold in USD                  |
 
 
-### KwikswapDayData
+### BrainautDayData
 
 Tracks data across all pairs aggregated into a daily bucket.
 
@@ -194,14 +194,14 @@ Tracks data across all pairs aggregated into a daily bucket.
 | ----------------- | --------------- | -------------------------------------------------------------------------------- |
 | id                | ID              | unix timestamp for start of day / 86400 giving a unique day index                |
 | date              | Int             | unix timestamp for start of day                                                  |
-| dailyVolumeETH    | BigDecimal      | total volume across all pairs on this day, stored as a derived amount of ETH     |
+| dailyVolumeBNB    | BigDecimal      | total volume across all pairs on this day, stored as a derived amount of BNB     |
 | dailyVolumeUSD    | BigDecimal      | total volume across all pairs on this day, stored as a derived amount of USD     |
-| totalVolumeETH    | BigDecimal      | all time volume across all pairs in ETH up to and including this day             |
-| totalLiquidityETH | BigDecimal      | total liquidity across all pairs in ETH up to and including this day             |
+| totalVolumeBNB    | BigDecimal      | all time volume across all pairs in BNB up to and including this day             |
+| totalLiquidityBNB | BigDecimal      | total liquidity across all pairs in BNB up to and including this day             |
 | totalVolumeUSD    | BigDecimal      | all time volume across all pairs in USD up to and including this day             |
 | totalLiquidityUSD | BigDecimal      | total liquidity across all pairs in USD up to and including this day             |
 | maxStored         | Int             | reference used to store most liquid tokens, used for historical liquidity charts |
-| mostLiquidTokens  | [TokenDayData!] | tokens with most liquidity in Kwikswap                                            |
+| mostLiquidTokens  | [TokenDayData!] | tokens with most liquidity in Brainaut                                            |
 | txCount           | BigInt          | number of transactions throughout this day                                       |
 
 
@@ -227,7 +227,7 @@ Tracks pair data across each day.
 
 ## Historical Entities
 
-The subgraph tracks aggregated information grouped by days to provide insights to daily activity on Kwikswap. While [time travel queries](https://blocklytics.org/blog/ethereum-blocks-subgraph-made-for-time-travel/) can be used for direct comparison against values in the past, it is much more expensive to query grouped data. For this reason the subgraph tracks information grouped in daily buckets, using timestamps provided by contract events. These entities can be used to query things like total volume on a given day, price of a token on a given day, etc.
+The subgraph tracks aggregated information grouped by days to provide insights to daily activity on Brainaut. While [time travel queries](https://blocklytics.org/blog/ethereum-blocks-subgraph-made-for-time-travel/) can be used for direct comparison against values in the past, it is much more expensive to query grouped data. For this reason the subgraph tracks information grouped in daily buckets, using timestamps provided by contract events. These entities can be used to query things like total volume on a given day, price of a token on a given day, etc.
 
 For each DayData type, a new entity is created each day.
 
@@ -242,11 +242,11 @@ Tracks token data aggregated across all pairs that include token.
 | date                | Int           | unix timestamp for start of day                                                                                                        |
 | token               | Token         | reference to token entity                                                                                                              |
 | dailyVolumeToken    | BigDecimal    | amount of token swapped across all pairs throughout day                                                                                |
-| dailyVolumeETH      | BigDecimal    | amount of token swapped across all pairs throughout day stored as a derived amount of ETH                                              |
+| dailyVolumeBNB      | BigDecimal    | amount of token swapped across all pairs throughout day stored as a derived amount of BNB                                              |
 | dailyVolumeUSD      | BigDecimal    | amount of token swapped across all pairs throughout day stored as a derived amount of USD                                              |
 | dailyTxns           | BigInt        | amount of transactions with this token across all pairs                                                                                |
 | totalLiquidityToken | BigDecimal    | token amount of token deposited across all pairs                                                                                       |
-| totalLiquidityETH   | BigDecimal    | token amount of token deposited across all pairs stored as amount of ETH                                                               |
+| totalLiquidityBNB   | BigDecimal    | token amount of token deposited across all pairs stored as amount of BNB                                                               |
 | totalLiquidityUSD   | BigDecimal    | token amount of token deposited across all pairs stored as amount of USD                                                               |
 | priceUSD            | BigDecimal    | price of token in derived USD                                                                                                          |
 | maxStored           | Int           | amount of token deposited in pair with highest token liquidity - used only as a reference for storing most liquid pairs for this token |

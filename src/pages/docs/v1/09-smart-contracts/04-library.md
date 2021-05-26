@@ -5,7 +5,7 @@ tags: smart-contracts, documentation
 
 # Code
 
-[`KwikswapV1Library.sol`](https://github.com/Kwikswap/Kwikswap-V1-Periphery/blob/master/contracts/libraries/KwikswapV1Library.sol)
+[`BrainautV1Library.sol`](https://github.com/Brainaut/Brainaut-V1-Periphery/blob/master/contracts/libraries/BrainautV1Library.sol)
 
 # Internal Functions
 

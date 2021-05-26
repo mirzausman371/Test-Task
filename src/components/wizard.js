@@ -12,7 +12,7 @@ const links = [
       {
         title: 'Smart contract development',
         link: '/docs/v1/smart-contract-integration/quick-start/',
-        description: 'Simplify the process of integrating Kwikswap into your project.',
+        description: 'Simplify the process of integrating Brainaut into your project.',
         tag: 'reference',
         icon: '🖥️'
       },
@@ -51,9 +51,9 @@ const links = [
     name: 'Liquidity',
     sublinks: [
       {
-        title: 'Anatomy of a Kwikswap Pool',
+        title: 'Anatomy of a Brainaut Pool',
         link: '/docs/v1/pools',
-        description: 'An overview of what a Kwikswap liquidity pool.'
+        description: 'An overview of what a Brainaut liquidity pool.'
       },
       {
         title: 'Understanding Liquidity Returns',
@@ -68,7 +68,7 @@ const links = [
       {
         title: 'Core Concepts',
         link: '/docs/v1/protocol-overview',
-        description: 'A high level technical overview of the Kwikswap protocol.'
+        description: 'A high level technical overview of the Brainaut protocol.'
       }
     ]
   }

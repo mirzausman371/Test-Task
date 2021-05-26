@@ -209,7 +209,7 @@ const Blog = props => {
       <BG />
       <SEO
         title={props.pageContext.frontmatter.title}
-        site={'Kwikswap Blog'}
+        site={'Brainaut Blog'}
         description={props.pageContext.frontmatter.previewText}
         path={props.location.pathname}
       />

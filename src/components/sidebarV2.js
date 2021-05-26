@@ -392,7 +392,7 @@ const SideBar = props => {
               <StyledLink to={'/docs/v1/API/overview'}>API</StyledLink>
             </StyledListItem>
             <StyledListItem>
-              <StyledLink to={'/whitepaper.pdf'}>Whitepaper</StyledLink>
+              <StyledLink to={'#'}>Whitepaper</StyledLink>
             </StyledListItem>
             <StyledListItem>
               <StyledLink to={'/docs/v1/faq'}>FAQ</StyledLink>

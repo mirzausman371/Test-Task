@@ -1,13 +1,13 @@
 ---
-title: Pair (ERC-20)
+title: Pair (BEP-20)
 tags: smart-contracts, documentation
 ---
 
-This documentation covers ERC-20 functionality for denominating pool tokens. For Kwikswap-specific functionality, see <Link to='/docs/v1/smart-contracts/pair'>Pair</Link>.
+This documentation covers BEP-20 functionality for denominating pool tokens. For Brainaut-specific functionality, see <Link to='/docs/v1/smart-contracts/pair'>Pair</Link>.
 
 # Code
 
-[`KwikswapV1ERC20.sol`](https://github.com/Kwikswap/kwikswap-v1-core/blob/master/contracts/KwikswapV1ERC20.sol)
+[`BrainautV1BEP20.sol`](https://github.com/Brainaut/brainaut-v1-core/blob/master/contracts/BrainautV1BEP20.sol)
 
 # Events
 
@@ -35,7 +35,7 @@ Emitted each time a transfer occurs via [transfer](#transfer-1), [transferFrom](
 function name() external pure returns (string memory);
 ```
 
-Returns `Kwikswap` for all pairs.
+Returns `Brainaut` for all pairs.
 
 ## symbol
 
@@ -43,7 +43,7 @@ Returns `Kwikswap` for all pairs.
 function symbol() external pure returns (string memory);
 ```
 
-Returns `KWIK` for all pairs.
+Returns `BRN` for all pairs.
 
 ## decimals
 
@@ -148,13 +148,13 @@ Sets the allowance for a spender where approval is granted via a signature.
 # Interface
 
 ```solidity
-import '@kwikswap/v1-core/contracts/interfaces/IKwikswapV1ERC20.sol';
+import '@simocos/v1-core/contracts/interfaces/IBrainautV1BEP20.sol';
 ```
 
 ```solidity
 pragma solidity >=0.5.0;
 
-interface IKwikswapV1ERC20 {
+interface IBrainautV1BEP20 {
   event Approval(address indexed owner, address indexed spender, uint value);
   event Transfer(address indexed from, address indexed to, uint value);
 
@@ -180,5 +180,5 @@ interface IKwikswapV1ERC20 {
 # ABI
 
 ```typescript
-import IKwikswapV1ERC20 from '@kwikswap/v1-core/build/IKwikswapV1ERC20.json'
+import IBrainautV1BEP20 from '@simocos/v1-core/build/IBrainautV1BEP20.json'
 ```

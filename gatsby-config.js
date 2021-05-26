@@ -6,12 +6,12 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `Kwikswap`,
-    description: `Automated liquidity protocol on Ethereum`,
-    author: `@KwikswapProtocol`,
+    title: `Brainaut`,
+    description: `Automated liquidity protocol on Binance Smart Chain`,
+    author: `@BrainautProtocol`,
     menulinks: menu,
-    siteUrl: `https://kwikswap.org`,
-    repository: `https://github.com/Kwikswap/kwikswap-org`,
+    siteUrl: `https://brainaut.net`,
+    repository: `https://github.com/Brainaut/brainaut-org`,
     commit: process.env.NOW_GITHUB_COMMIT_SHA || `master`
   },
   plugins: [
@@ -20,14 +20,14 @@ module.exports = {
       options: {
         bucketName: process.env.AWS_S3_BUCKET || 'NOT_SPECIFIED',
         protocol: 'https',
-        hostname: 'kwikswap.org',
+        hostname: 'brainaut.net',
         acl: null
       }
     },
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://kwikswap.org`
+        siteUrl: `https://brainaut.net`
       }
     },
     {
@@ -100,9 +100,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-twitter-cards`,
             options: {
-              title: 'Kwikswap', // website title
+              title: 'Brainaut', // website title
               separator: '|', // default
-              author: '@KwikswapProtocol',
+              author: '@BrainautProtocol',
               background: require.resolve('./static/images/twitter_card_bg.jpg'), // path to 1200x630px file or hex code, defaults to black (#000000)
               fontColor: '#FF3093', // defaults to white (#ffffff)
               fontStyle: 'sans-serif', // default
@@ -184,7 +184,7 @@ module.exports = {
             }
             `,
             output: '/rss.xml',
-            title: 'Kwikswap Blog RSS Feed'
+            title: 'Brainaut Blog RSS Feed'
           }
         ]
       }
@@ -194,7 +194,7 @@ module.exports = {
       resolve: `gatsby-plugin-algolia-docsearch-appid`,
       options: {
         apiKey: '8962240e69e6d23a88432f501c115470',
-        indexName: 'kwikswap_v1_docs',
+        indexName: 'brainaut_v1_docs',
         appId: 'VZ0CVS8XCW',
         inputSelector: 'blank' // use dummy selector to avoid double render
       }

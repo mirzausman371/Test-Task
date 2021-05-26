@@ -5,11 +5,11 @@ tags: smart-contracts, documentation
 
 # Code
 
-[`KwikswapV1Factory.sol`](https://github.com/Kwikswap/kwikswap-v1-core/blob/master/contracts/KwikswapV1Factory.sol)
+[`BrainautV1Factory.sol`](https://github.com/Brainaut/brainaut-v1-core/blob/master/contracts/BrainautV1Factory.sol)
 
 # Address
 
-`KwikswapV1Factory` is deployed at `0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d` on the Ethereum [mainnet](https://etherscan.io/address/0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d), and the [Ropsten](https://ropsten.etherscan.io/address/0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d), [Rinkeby](https://rinkeby.etherscan.io/address/0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d), [Görli](https://goerli.etherscan.io/address/0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d), and [Kovan](https://kovan.etherscan.io/address/0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d) testnets.
+`BrainautV1Factory` is deployed at `0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540` on the Binance Smart Chain [mainnet](https://bscscan.com/address/0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540), and the [Testnet](https://testnet.bscscan.com/address/0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540), [Testnet](https://testnet.bscscan.com/address/0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540), [Görli](https://goerli.bscscan.com/address/0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540), and [Testnet](https://testnet.bscscan.com/address/0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540) testnets.
 
 # Events
 
@@ -89,19 +89,19 @@ Creates a pair for `tokenA` and `tokenB` if one doesn't exist already.
 # ABI
 
 ```typescript
-import IKwikswapV1Factory from '@kwikswap/v1-core/build/IKwikswapV1Factory.json'
+import IBrainautV1Factory from '@simocos/v1-core/build/IBrainautV1Factory.json'
 ```
 
 # Interface
 
 ```solidity
-import '@kwikswap/v1-core/contracts/interfaces/IKwikswapV1Factory.sol';
+import '@simocos/v1-core/contracts/interfaces/IBrainautV1Factory.sol';
 ```
 
 ```solidity
 pragma solidity >=0.5.0;
 
-interface IKwikswapV1Factory {
+interface IBrainautV1Factory {
   event PairCreated(address indexed token0, address indexed token1, address pair, uint);
 
   function getPair(address tokenA, address tokenB) external view returns (address pair);

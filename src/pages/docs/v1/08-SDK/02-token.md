@@ -7,12 +7,12 @@ tags: sdk, documentation
 constructor(chainId: ChainId, address: string, decimals: number, symbol?: string, name?: string)
 ```
 
-The Token entity represents an ERC-20 token at a specific address on a specific chain.
+The Token entity represents an BEP-20 token at a specific address on a specific chain.
 
 # Example
 
 ```typescript
-import { ChainId, Token } from '@kwikswap/sdk'
+import { ChainId, Token } from '@simocos/sdk'
 
 const token = new Token(ChainId.MAINNET, '0xc0FFee0000000000000000000000000000000000', 18, 'HOT', 'Caffeine')
 ```

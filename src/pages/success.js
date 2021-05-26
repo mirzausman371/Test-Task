@@ -7,7 +7,7 @@ import BG from '../components/bg'
 const Success = props => {
   // const data = useStaticQuery(graphql`
   //   {
-  //     kwikcornImage: file(relativePath: { eq: "kwik_image.jpg" }) {
+  //     brainautcornImage: file(relativePath: { eq: "brainaut_image.jpg" }) {
   //       childImageSharp {
   //         fluid(maxWidth: 1200) {
   //           ...GatsbyImageSharpFluid_noBase64
@@ -23,7 +23,7 @@ const Success = props => {
       <SEO title="Success" path={props.location.pathname} />
       {/* <StyledAbout>
         <StyledSectionFlex style={{ flexDirection: 'column', paddingBottom: '0px' }}>
-          <StyledCardBG fluid={data.kwikcornImage.childImageSharp.fluid} />
+          <StyledCardBG fluid={data.brainautcornImage.childImageSharp.fluid} />
           <Title style={{ width: '100%' }}>You are now subscribed.</Title>
           <Link to="/">Back home</Link>
         </StyledSectionFlex>

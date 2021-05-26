@@ -12,7 +12,7 @@ const IndexPage = props => {
       <SEO
         title="Home"
         path={props.location.pathname}
-        description={'A fully decentralized protocol for automated liquidity provision on Ethereum'}
+        description={'A fully decentralized protocol for automated liquidity provision on Binance Smart Chain'}
       />
     </Layout>
   )

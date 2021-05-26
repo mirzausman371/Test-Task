@@ -1,5 +1,6 @@
 import styled from 'styled-components'
-import uImage from '../images/big_kwikcorn.png'
+// import uImage from '../images/banner-bg.png'
+import uImage from '../images/banner-bg-2.png'
 import noise from '../images/noise.png'
 import { Link } from 'gatsby'
 
@@ -7,17 +8,19 @@ export const CardBGImage = styled.span`
   mix-blend-mode: ${({ isDark }) => (isDark ? 'overlay' : 'lighten')};
 
   background: url(${uImage});
-  width: 100%;
+   background-size:cover;
+   width: 130%;
   height: 100%;
-  opacity: 0.3;
+  opacity: 1;
+  padding-bottom:275px;
   /* max-width: 1000px; */
   /* transform: rotate(-15deg); */
   /* user-select: none; */
   position: absolute;
   left: 0;
   top: 0;
-  ${({ desaturate }) => desaturate && `filter: saturate(0)`};
-  ${({ theme }) => theme.invertImage};
+  /*${({ desaturate }) => desaturate && `filter: saturate(0)`};
+  ${({ theme }) => theme.invertImage};*/
 `
 
 export const CardNoise = styled.span`
@@ -26,7 +29,7 @@ export const CardNoise = styled.span`
   width: 100%;
   height: 100%;
   /* max-width: 1000px; */
-  opacity: 0.8;
+  opacity: 0;
   position: absolute;
   left: 0;
   top: 0;

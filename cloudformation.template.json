@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-  "Description": "kwikswap.org site",
+  "Description": "brainaut.net site",
   "Outputs": {
     "DeploymentAccessKeyId": {
       "Description": "Access key ID for deploying to the S3 bucket",
@@ -85,12 +85,12 @@
       "Type": "AWS::CertificateManager::Certificate",
       "Description": "The certificate used to secure the CloudFront distribution",
       "Properties": {
-        "DomainName": "kwikswap.org",
+        "DomainName": "brainaut.net",
         "ValidationMethod": "DNS",
         "Tags": [
           {
             "Key": "Name",
-            "Value": "kwikswap.org"
+            "Value": "brainaut.net"
           },
           {
             "Key": "Stack",
@@ -201,10 +201,10 @@
           }
         ],
         "DistributionConfig": {
-          "Comment": "kwikswap.org",
+          "Comment": "brainaut.net",
           "Enabled": true,
           "Aliases": [
-            "kwikswap.org"
+            "brainaut.net"
           ],
           "DefaultRootObject": "index.html",
           "HttpVersion": "http2",

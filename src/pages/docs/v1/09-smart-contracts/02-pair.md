@@ -3,11 +3,11 @@ title: Pair
 tags: smart-contracts, documentation
 ---
 
-This documentation covers Kwikswap-specific functionality. For ERC-20 functionality, see <Link to='/docs/v1/smart-contracts/pair-erc-20'>Pair (ERC-20)</Link>.
+This documentation covers Brainaut-specific functionality. For BEP-20 functionality, see <Link to='/docs/v1/smart-contracts/pair-bep-20'>Pair (BEP-20)</Link>.
 
 # Code
 
-[`KwikswapV1Pair.sol`](https://github.com/Kwikswap/kwikswap-v1-core/blob/master/contracts/KwikswapV1Pair.sol)
+[`BrainautV1Pair.sol`](https://github.com/Brainaut/brainaut-v1-core/blob/master/contracts/BrainautV1Pair.sol)
 
 # Address
 
@@ -132,7 +132,7 @@ function mint(address to) external returns (uint liquidity);
 
 Creates pool tokens.
 
-- Emits [Mint](#mint), [Sync](#sync), <Link to='/docs/v1/smart-contracts/pair-erc-20#transfer'>Transfer</Link>.
+- Emits [Mint](#mint), [Sync](#sync), <Link to='/docs/v1/smart-contracts/pair-bep-20#transfer'>Transfer</Link>.
 
 ## swap
 
@@ -150,7 +150,7 @@ Swaps tokens. For regular swaps, `data.length` must be `0`.
 function skim(address to) external;
 ```
 
-See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
+See the <a href='#' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
 
 ## burn
 
@@ -160,7 +160,7 @@ function burn(address to) external returns (uint amount0, uint amount1);
 
 Destroys pool tokens.
 
-- Emits [Burn](#burn), [Sync](#sync), <Link to='/docs/v1/smart-contracts/pair-erc-20#transfer'>Transfer</Link>.
+- Emits [Burn](#burn), [Sync](#sync), <Link to='/docs/v1/smart-contracts/pair-bep-20#transfer'>Transfer</Link>.
 
 ## sync
 
@@ -168,20 +168,20 @@ Destroys pool tokens.
 function sync() external;
 ```
 
-See the <a href='/whitepaper.pdf' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
+See the <a href='#' target='_blank' rel='noopener noreferrer'>whitepaper</a>.
 
 - Emits [Sync](#sync).
 
 # Interface
 
 ```solidity
-import '@kwikswap/v1-core/contracts/interfaces/IKwikswapV1Pair.sol';
+import '@simocos/v1-core/contracts/interfaces/IBrainautV1Pair.sol';
 ```
 
 ```solidity
 pragma solidity >=0.5.0;
 
-interface IKwikswapV1Pair {
+interface IBrainautV1Pair {
   event Approval(address indexed owner, address indexed spender, uint value);
   event Transfer(address indexed from, address indexed to, uint value);
 
@@ -234,5 +234,5 @@ interface IKwikswapV1Pair {
 # ABI
 
 ```typescript
-import IKwikswapV1Pair from '@kwikswap/v1-core/build/IKwikswapV1Pair.json'
+import IBrainautV1Pair from '@simocos/v1-core/build/IBrainautV1Pair.json'
 ```

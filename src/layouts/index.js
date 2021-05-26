@@ -7,7 +7,6 @@
 
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import Header from '../components/header'
 import MiniHeader from '../components/miniheader'
 
 import Footer from '../components/footer'
@@ -32,11 +31,10 @@ const Layout = ({ path, children, nofooter, isDocs }) => {
   `)
   return (
     <StyledThemeProvider>
-      {isDocs ? (
-        <MiniHeader path={path} siteTitle={data.site.siteMetadata.title} />
-      ) : (
-        <Header path={path} siteTitle={data.site.siteMetadata.title} />
-      )}
+      {
+        isDocs && <MiniHeader path={path} siteTitle={data.site.siteMetadata.title} />
+      }
+
       <Mdx>{children}</Mdx>
       {nofooter ? null : <Footer />}
     </StyledThemeProvider>

@@ -29,7 +29,7 @@ const Footer = () => {
   return (
     <StyledFooter>
       This site is a work in progress.{' '}
-      <a href="https://github.com/Kwikswap/kwikswap-org/issues">
+      <a href="https://github.com/Brainaut/brainaut-org/issues">
         <u>Found an issue?</u>
       </a>
     </StyledFooter>

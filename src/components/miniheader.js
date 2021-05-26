@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Search from './algoliaSearch'
-import Kwik from '../images/kwik_inline.png'
+import Brainaut from '../images/brainaut_inline.png'
 import { Sun, Moon, Home } from 'react-feather'
 
 import MenuIcon from '../images/menu.inline.svg'
@@ -107,7 +107,7 @@ const StyledHomeLink = styled(Link)`
   align-items: center;
 `
 
-const StyledKwik = styled.div`
+const StyledBrainaut = styled.div`
   // path {
   //   fill: ${({ theme }) => theme.colors.link};
   // }
@@ -196,14 +196,14 @@ const Header = props => {
               textDecoration: `none`
             }}
           >
-            <StyledKwik>
-            <img src={Kwik} alt="" />
-          </StyledKwik>
+            <StyledBrainaut>
+            <img src={Brainaut} alt="" />
+          </StyledBrainaut>
           </StyledHomeLink>
           {props.path && props.path !== '/' && props.path !== '' && (
             <>
               <StyledNavTitle to={'/' + props.path.split('/')[1]}>
-                {props.path.length > 20 ? 'Docs /' : 'Kwikswap Docs /'}
+                {props.path.length > 20 ? 'Docs /' : 'Brainaut Docs /'}
               </StyledNavTitle>
               <StyledNavTitle to={'/docs/' + props.path.split('/')[2]}>
                 {props.path.split('/')[2].replace(/(^|\s)\S/g, function(t) {
@@ -235,7 +235,7 @@ const Header = props => {
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </StyledButton>
           <StyledButton fill>
-            <a href="https://github.com/Kwikswap">
+            <a href="https://github.com/Brainaut">
               <Github width={20} />
             </a>
           </StyledButton>

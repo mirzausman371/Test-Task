@@ -33,7 +33,7 @@ export const theme = darkMode => ({
   // : 'radial-gradient(76.02% 75.41% at 1.84% 0%,#363cff 0%,#e5d8ffeb 100%);',
 
   // for setting css on <html>
-  backgroundColor: darkMode ? '#0f1013' : '#FFF',
+  backgroundColor: darkMode ? '#121314' : '#FFF',
 
   modalBackground: darkMode ? 'rgba(0,0,0,0.6)' : 'rgba(0,0,0,0.5)',
   cardBG: darkMode ? 'rgba(0, 0, 0, .9)' : 'rgba(236, 236, 236, .9)',
@@ -136,7 +136,7 @@ export const GlobalStyle = createGlobalStyle`
     background-size: contain;
     background-repeat: no-repeat;
     overflow-y: none;
-    width: 98vw;
+    width: 100%;
     box-sizing: border-box;
   }
 
@@ -151,7 +151,7 @@ export const GlobalStyle = createGlobalStyle`
 
     line-height: 1.55;
     max-width: 1440px;
-    width: 98vw;
+    width: 100%;
     margin: 0px auto;
     font-weight: 400 !important;
     color: ${({ theme }) => theme.textColor};
@@ -247,12 +247,11 @@ export const GlobalStyle = createGlobalStyle`
     margin-left: auto;
   }
   .banner-text h1 {
-    font-size: 76px;
+    font-size: 70px;
     font-weight: 500;
-
     line-height: 93px;
     text-align: center;
-    margin-top: 114px;
+    margin-top:80px;
     margin-bottom: 60px;
     padding: 0 5px;
     height: 361px;
@@ -307,6 +306,11 @@ export const GlobalStyle = createGlobalStyle`
   transform: scale(0.98);
   transition: transform 0.25s ease 0s;
   display: inline-block;
+}
+.title-body{
+  display:flex;
+  align-items:center;
+  flex-direction:column;
 }
 .title-body h2 {
   font-size: 48px;
@@ -399,6 +403,17 @@ ol, ul {
   margin-right: 12px;
   min-height:272px !important;
   min-width:200px;
+  
+}
+
+.box1{
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow:hidden;
+  box-shadow: 0px 0px 40px 0px rgba(0 ,0 ,0 , .06);
+}
+.box-sec .box-line.darkmode .box1,.darkmode .power-1, .darkmode .power-2{
+  background-color: rgba(12 ,12 ,12 , .6);
 }
 a {
   text-decoration: none;
@@ -459,7 +474,7 @@ footer h4{
 }
 .power .row{
   max-width:1200px;
-  margin:40px 12vw;
+  margin:40px 0;
 }
 .header-btn{
   transition: transform 0.45s cubic-bezier(0.19, 1, 0.22, 1);
@@ -470,7 +485,8 @@ footer h4{
 }
 .flex-box-bg{
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
+  flex-wrap:wrap;
 }
 .column{
 
@@ -605,9 +621,16 @@ footer{
   background: url("../images/banner-bg.png") no-repeat !important;
   background-size: cover !important;
 }
-
+#mc_embed_signup_scroll{
+  display:flex;
+  justify-content:center;
+  max-width:555px;
+  margin:0 auto;
+}
 #mc_embed_signup_scroll >li{
   min-width:0;
+  min-height:0 !important;
+  flex-grow:1;
 }
 #mc_embed_signup {
   background: transparent;
@@ -619,8 +642,23 @@ footer{
 }
 #mc_embed_signup input[type=submit] {
   border: none !important;
+  width:100%;
 }
-
+.overflow-hidden{
+  overflow:hidden;
+  width:100%;
+}
+.carousel-inner{
+  display:flex;
+  transition:.5s transform ease;
+}
+.carousel-inner .item{
+  flex-basis:100%;
+  flex-shrink:0;
+}
+.carousel-inner .item img{
+border-radius:15px;
+}
 @media screen and (max-width: 1060px){
 
   .power-1{
@@ -632,7 +670,6 @@ footer{
       line-height: 58px;
       height:330px;
   }
-
   .title-body h2 {
     font-size: 33px;
     line-height: 42px;
@@ -708,8 +745,14 @@ footer{
   text-align: center;
   padding: 0 6px;
 }
-  }
+}
+  @media (max-width:768px)
+  {
 
+    footer {
+      padding:0px 15px;
+    }
+  }
 
   @media screen and (max-width: 767px){
 
@@ -721,7 +764,7 @@ footer{
 
 @media (min-width:768px){
   .container {
-    width: 750px;
+    width: auto;
 }
 }
 @media (min-width:992px){

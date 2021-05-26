@@ -11,13 +11,13 @@ The most obvious way to get the address for a pair is to call <Link to='/docs/v1
 
 # CREATE2
 
-Thanks to some [fancy footwork in the factory](https://github.com/Kwikswap/kwikswap-v1-core/blob/master/contracts/KwikswapV1Factory.sol#L32), we can also compute pair addresses _without any on-chain lookups_ because of [CREATE2](https://eips.ethereum.org/EIPS/eip-1014). The following values are required for this technique:
+Thanks to some [fancy footwork in the factory](https://github.com/Brainaut/brainaut-v1-core/blob/master/contracts/BrainautV1Factory.sol#L32), we can also compute pair addresses _without any on-chain lookups_ because of [CREATE2](https://eips.ethereum.org/EIPS/eip-1014). The following values are required for this technique:
 
 |                        |                                                                                 |
 | :--------------------- | :------------------------------------------------------------------------------ |
 | `address`              | The <Link to='/docs/v1/smart-contracts/factory/#address'>factory address</Link> |
 | `salt`                 | `keccak256(abi.encodePacked(token0, token1))`                                   |
-| `keccak256(init_code)` | `0xbc919ae6f6f95dca1e223fc957286afa1da81529418e9f187db8a0b2d2e963bc`            |
+| `keccak256(init_code)` | `0x052026a6c1152ba5014707efb14e26fcade58a99b0fcf2bb1f97ac7baf22ea31`            |
 
 - `token0` must be strictly less than `token1` by sort order.
 
@@ -28,10 +28,10 @@ Thanks to some [fancy footwork in the factory](https://github.com/Kwikswap/kwiks
 
 ### TypeScript
 
-This example makes use of the <Link to='/docs/v1/SDK/getting-started/'>Kwikswap SDK</Link>. In reality, the SDK computes pair addresses behind the scenes, obviating the need to compute them manually like this.
+This example makes use of the <Link to='/docs/v1/SDK/getting-started/'>Brainaut SDK</Link>. In reality, the SDK computes pair addresses behind the scenes, obviating the need to compute them manually like this.
 
 ```typescript
-import { FACTORY_ADDRESS, INIT_CODE_HASH } from '@kwikswap/sdk'
+import { FACTORY_ADDRESS, INIT_CODE_HASH } from '@simocos/sdk'
 import { pack, keccak256 } from '@ethersproject/solidity'
 import { getCreate2Address } from '@ethersproject/address'
 

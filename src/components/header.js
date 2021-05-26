@@ -6,7 +6,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import styled from 'styled-components'
 import Menu from './menu'
 
-import Kwik from '../images/kwik_inline.png'
+import Brainaut from '../images/brainaut_inline.png'
 import MenuIcon from '../images/menu.inline.svg'
 import CloseIcon from '../images/x.inline.svg'
 
@@ -19,14 +19,19 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  padding: 2rem;
+  padding: .5rem 1rem;
   width: 100%;
   z-index: 3;
-  position: sticky;
   top: 0;
+  left:0;
+  ${({ isFixed, isDark }) => isFixed && `
+  position:fixed;
+  background-color:${isDark ? "#000" : "rgba(255,255,255,0.9)"};
+  `}
   @media (max-width: 960px) {
     padding: 1.5rem 2rem;
-    height: ${({ open }) => (open ? '100vh' : '100%')};
+    height: ${({ open }) => (open ? '100vh' : 'auto')};
+ 
   }
 `
 
@@ -117,6 +122,10 @@ const StyledButton = styled.button`
   :hover {
     cursor: pointer;
   }
+  @media (max-width: 960px) {
+    width:100%;
+    justify-content:flex-start;
+  }
 `
 
 const StyledHomeLink = styled(Link)`
@@ -146,7 +155,7 @@ const MenuToggle = styled.button`
   }
 `
 
-const StyledKwik = styled.div`
+const StyledBrainaut = styled.div`
   // path {
   //   fill: ${({ theme }) => theme.textColor};
   // }
@@ -183,12 +192,29 @@ const HideSmall = styled.span`
 
 const Header = props => {
   const matches = useMediaQuery('only screen and (max-width: 1024px)')
+  const [isFixed, setIsFixed] = useState(false);
   const node = useRef()
   const button = useRef()
   const [isMenuOpen, updateIsMenuOpen] = useState(false)
   const [darkMode, toggleDarkMode] = useDarkMode()
-
-  const data = useStaticQuery(graphql`
+  const header = useRef();
+  React.useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [header, isFixed])
+  const handleScroll = (e) => {
+   
+    const y = header.current.offsetTop;
+      if(window.scrollY > y) {
+        setIsFixed(true);
+  }
+    else  {
+  setIsFixed(false);
+}
+  }
+const data = useStaticQuery(graphql`
     {
       site {
         siteMetadata {
@@ -206,69 +232,67 @@ const Header = props => {
     }
   `)
 
-  useLayoutEffect(() => {
-    // Get original body overflow
-    const originalStyle = window.getComputedStyle(document.body).overflow
-    // Prevent scrolling on mount
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden'
-      document.body.style.maxHeight = '-webkit-fill-available'
+useLayoutEffect(() => {
+  // Get original body overflow
+  const originalStyle = window.getComputedStyle(document.body).overflow
+  // Prevent scrolling on mount
+  if (isMenuOpen) {
+    document.body.style.overflow = 'hidden'
+    document.body.style.maxHeight = '-webkit-fill-available'
+  }
+  // Re-enable scrolling when component unmounts
+  return () => (document.body.style.overflow = originalStyle)
+}, [isMenuOpen]) // Empty array ensures effect is only run on mount and unmount
+
+useEffect(() => {
+  const handleClickOutside = e => {
+    if (node.current.contains(e.target) || button.current.contains(e.target)) {
+      return
     }
-    // Re-enable scrolling when component unmounts
-    return () => (document.body.style.overflow = originalStyle)
-  }, [isMenuOpen]) // Empty array ensures effect is only run on mount and unmount
+    updateIsMenuOpen(false)
+  }
 
-  useEffect(() => {
-    const handleClickOutside = e => {
-      if (node.current.contains(e.target) || button.current.contains(e.target)) {
-        return
-      }
-      updateIsMenuOpen(false)
-    }
+  document.addEventListener('mousedown', handleClickOutside)
 
-    document.addEventListener('mousedown', handleClickOutside)
+  return () => {
+    document.removeEventListener('mousedown', handleClickOutside)
+  }
+}, [isMenuOpen, updateIsMenuOpen, matches])
 
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
-  }, [isMenuOpen, updateIsMenuOpen, matches])
+return (
+  <StyledHeader open={isMenuOpen} ref={header} isFixed={isFixed} isDark={props.isDark[0]}>
+    <StyledNavTitleWrapper>
+      <StyledHomeLink
+        to="/"
+        style={{
+          textDecoration: `none`
+        }}
+      >
+        <StyledBrainaut>
+          <img src={Brainaut} alt="" style={{ margin: '20px', marginTop: '0px' }} />
+        </StyledBrainaut>
+      </StyledHomeLink>
+    </StyledNavTitleWrapper>
+    <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
+      {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
+    </MenuToggle>
+    <StyledNav ref={node} open={isMenuOpen}>
+      {data.site.siteMetadata.menulinks.map(item => {
+        return <Menu key={item.name} data={item} />
+      })}
+        <StyledButton type="button" onClick={toggleDarkMode}>
+          {darkMode ? <Sun size={40} /> : <Moon size={40} />}
+        </StyledButton>
 
-  return (
-    <StyledHeader open={isMenuOpen}>
-      <StyledNavTitleWrapper>
-        <StyledHomeLink
-          to="/"
-          style={{
-            textDecoration: `none`
-          }}
-        >
-          <StyledKwik>
-            <img src={Kwik} alt="" style={{ margin: '20px', marginTop: '0px' }} />
-          </StyledKwik>
-        </StyledHomeLink>
-      </StyledNavTitleWrapper>
-      <MenuToggle ref={button} open={isMenuOpen} onClick={() => updateIsMenuOpen(!isMenuOpen)}>
-        {isMenuOpen ? <StyledCloseIcon /> : <StyledMenuIcon />}
-      </MenuToggle>
-      <StyledNav ref={node} open={isMenuOpen}>
-        {data.site.siteMetadata.menulinks.map(item => {
-          return <Menu key={item.name} data={item} />
-        })}
-        <HideSmall>
-          <StyledButton type="button" onClick={toggleDarkMode}>
-            {darkMode ? <Sun size={40} /> : <Moon size={40} />}
-          </StyledButton>
-        </HideSmall>
-
-        {props.path !== undefined && (
-          <div className = 'header-btn'>
-            <StyledTradeLink href="https://app.kwikswap.org/">Launch App </StyledTradeLink>
-            <StyledArrowLink>↗</StyledArrowLink>
-          </div>
-        )}
-      </StyledNav>
-    </StyledHeader>
-  )
+      {props.path !== undefined && (
+        <div className='header-btn'>
+          <StyledTradeLink href="https://app.brainaut.net/">Launch App </StyledTradeLink>
+          <StyledArrowLink>↗</StyledArrowLink>
+        </div>
+      )}
+    </StyledNav>
+  </StyledHeader>
+)
 }
 
 Header.propTypes = {

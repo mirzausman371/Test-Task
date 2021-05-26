@@ -27,7 +27,7 @@ function SEO({ description, lang, title, path }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
-  const kwikTitle = 'Kwikswap'
+  const brainautTitle = 'Brainaut'
 
   return (
     <Helmet
@@ -39,20 +39,24 @@ function SEO({ description, lang, title, path }) {
     >
       <meta charSet="utf-8" />
       <html lang="en" />
+      <meta name="viewport" content="height=device-height, 
+                      width=device-width, initial-scale=1.0, 
+                      minimum-scale=1.0, maximum-scale=1.0, 
+                      user-scalable=no, target-densitydpi=device-dpi"></meta>
       <meta name="title" content={title} />
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={title}></meta>
 
-      <meta property="og:title" content={kwikTitle} />
+      <meta property="og:title" content={brainautTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content={'website'} />
       <meta property="og:url" content={site.siteMetadata.siteUrl + path} />
-      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}Kwikswap-card.jpg`} />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}Brainaut-card.jpg`} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content="@KwikswapProtocol"></meta>
-      <meta name="twitter:site" content="@KwikswapProtocol" />
-      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}Kwikswap-card.jpg`} />
+      <meta name="twitter:creator" content="@BrainautProtocol"></meta>
+      <meta name="twitter:site" content="@BrainautProtocol" />
+      <meta property="og:image" content={`${site.siteMetadata.siteUrl}${path ? path : '/images/'}Brainaut-card.jpg`} />
 
       {/* <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
       <link href="../css/bootstrap.min.css" rel="stylesheet" />

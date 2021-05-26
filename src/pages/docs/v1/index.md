@@ -1,19 +1,19 @@
 ---
-title: Kwikswap Documentation
+title: Brainaut Documentation
 ---
 
-Welcome! The pages that follow contain comprehensive documentation of the Kwikswap ecosystem. If you are new to Kwikswap, Please check out <Link to="/docs/v1/protocol-overview/how-kwikswap-works/">Protocol Overview</Link> or <Link to="/docs/v1/faq">FAQ</Link> first.
+Welcome! The pages that follow contain comprehensive documentation of the Brainaut ecosystem. If you are new to Brainaut, Please check out <Link to="/docs/v1/protocol-overview/how-brainaut-works/">Protocol Overview</Link> or <Link to="/docs/v1/faq">FAQ</Link> first.
 
-For a high-level overview of Kwikswap, see the <Link to='/blog/'>introductory blog post</Link>.
+For a high-level overview of Brainaut, see the <Link to='/blog/'>introductory blog post</Link>.
 
 ## Developer links
 
-The Kwikswap codebase open source components.
+The Brainaut codebase open source components.
 
-- [`kwikswap-v1-core`](https://github.com/Kwikswap/kwikswap-v1-core)
-- [`kwikswap-v1-periphery`](https://github.com/Kwikswap/Kwikswap-V1-Periphery)
-- [`kwikswap-frontend`](https://github.com/Kwikswap/kwikswap-org)
-- [`kwikswap-sdk`](https://github.com/Kwikswap/sdk)
+- [`brainaut-v1-core`](https://github.com/Brainaut/brainaut-v1-core)
+- [`brainaut-v1-periphery`](https://github.com/Brainaut/Brainaut-V1-Periphery)
+- [`brainaut-frontend`](https://github.com/Brainaut/brainaut-org)
+- [`brainaut-sdk`](https://github.com/Brainaut/sdk)
 
 
 ## Getting Started
@@ -25,10 +25,10 @@ Explore the sidebar to find more specific documentation covering other aspects o
 
 ## Reference materials
 
-Get to know the Kwikswap SDK and smart contract API objects, methods, attributes, and responses.
+Get to know the Brainaut SDK and smart contract API objects, methods, attributes, and responses.
 
 - <Link to="/docs/v1/SDK/getting-started/">SDK</Link>
 - <Link to="/docs/v1/API/overview">API</Link>
 - <Link to="/docs/v1/smart-contracts/factory">Smart Contracts</Link>
-- [Whitepaper](/whitepaper.pdf)
+- [Whitepaper](#)
 

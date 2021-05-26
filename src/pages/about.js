@@ -104,7 +104,7 @@ export const GET_BLOCK = gql`
   }
 `
 
-export const ETH_PRICE = block => {
+export const BNB_PRICE = block => {
   const queryString = block
     ? `
     query bundles {
@@ -126,7 +126,7 @@ export const ETH_PRICE = block => {
 
 const APOLLO_QUERY = gql`
   {
-    kwikswapFactory(id: "0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d") {
+    brainautFactory(id: "0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540") {
       totalVolumeUSD
       totalLiquidityUSD
       pairCount
@@ -137,10 +137,10 @@ const APOLLO_QUERY = gql`
   }
 `
 
-export const KWIKSWAP_GLOBALS_24HOURS_AGO_QUERY = block => {
+export const BRAINAUT_GLOBALS_24HOURS_AGO_QUERY = block => {
   let queryString = `
-  query kwikswapFactory {
-    kwikswapFactory(id: "0xdD9EFCbDf9f422e2fc159eFe77aDD3730d48056d", block: { number: ${block} }) {
+  query brainautFactory {
+    brainautFactory(id: "0xb7F9F8D0Ce72b44fd8c08Bd8AfBfD51ed1c5B540", block: { number: ${block} }) {
       totalVolumeUSD
       totalLiquidityUSD
       pairCount
@@ -170,12 +170,12 @@ const About = props => {
   useEffect(() => {
     async function getData() {
       let result = await client.query({
-        query: KWIKSWAP_GLOBALS_24HOURS_AGO_QUERY(oneDayBackBlock),
+        query: BRAINAUT_GLOBALS_24HOURS_AGO_QUERY(oneDayBackBlock),
 
         fetchPolicy: 'cache-first'
       })
       if (result) {
-        setOnedayResult(result?.data?.kwikswapFactory)
+        setOnedayResult(result?.data?.brainautFactory)
       }
     }
     if (oneDayBackBlock) {
@@ -183,16 +183,16 @@ const About = props => {
     }
   }, [oneDayBackBlock])
 
-  let KwikStats = {
+  let BrainautStats = {
     key: function(n) {
       return this[Object.keys(this)[n]]
     }
   }
 
   if (data && oneDayResult) {
-    const volume24Hour = parseFloat(data?.kwikswapFactory?.totalVolumeUSD) - parseFloat(oneDayResult?.totalVolumeUSD)
+    const volume24Hour = parseFloat(data?.brainautFactory?.totalVolumeUSD) - parseFloat(oneDayResult?.totalVolumeUSD)
 
-    KwikStats.volume = [
+    BrainautStats.volume = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -200,18 +200,18 @@ const About = props => {
         compactDisplay: 'short'
       }).format(volume24Hour)
     ]
-    KwikStats.liquidity = [
+    BrainautStats.liquidity = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
         notation: 'compact',
         compactDisplay: 'short'
         // maximumSignificantDigits: 5
-      }).format(data.kwikswapFactory.totalLiquidityUSD)
+      }).format(data.brainautFactory.totalLiquidityUSD)
     ]
-    KwikStats.exchanges = [Number.parseFloat(data?.kwikswapFactory?.pairCount)]
+    BrainautStats.exchanges = [Number.parseFloat(data?.brainautFactory?.pairCount)]
 
-    KwikStats.ETHprice = [
+    BrainautStats.BNBprice = [
       new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
@@ -219,7 +219,7 @@ const About = props => {
         compactDisplay: 'short',
         maximumSignificantDigits: 5
       }).format(parseFloat(data?.bundle?.ethPrice)),
-      '<small> Kwik ETH Price </small>'
+      '<small> Brainaut BNB Price </small>'
     ]
   }
 
@@ -237,15 +237,15 @@ const About = props => {
           <Numbers id="about" style={{ flexDirection: 'column' }}>
             <div style={{ display: 'flex', width: '100%', justifyContent: 'space-between', margin: 0 }}>
               <h2 style={{ fontSize: '32px' }}>
-                {KwikStats.exchanges}
+                {BrainautStats.exchanges}
                 <p style={{ fontSize: '14px' }}>Token Pairs </p>
               </h2>
               <h2 style={{ fontSize: '32px' }}>
-                {KwikStats.volume}
+                {BrainautStats.volume}
                 <p style={{ fontSize: '14px' }}>24H Volume</p>
               </h2>
               <h2 style={{ fontSize: '32px' }}>
-                {KwikStats.liquidity}
+                {BrainautStats.liquidity}
                 <p style={{ fontSize: '14px' }}>Total Liquidity</p>
               </h2>
               <h2 style={{ fontSize: '32px' }}>
@@ -256,13 +256,13 @@ const About = props => {
           </Numbers>
           <StyledSectionFlex id="about" style={{ flexDirection: 'column' }}>
             <p>
-              Kwikswap empowers developers, liquidity providers and traders to participate in a financial marketplace
+              Brainaut empowers developers, liquidity providers and traders to participate in a financial marketplace
               that is open and accessible to all.
             </p>
             <p>We are committed to open source software and building on the decentralized web.</p>
 
             <div style={{ display: 'flex', width: '100%', gap: '1rem', margin: 0 }}>
-              <InternalLink to="/whitepaper.pdf">
+              <InternalLink to="#">
                 Whitepaper <span style={{ fontSize: '11px' }}>↗</span>
               </InternalLink>
             </div>
@@ -271,11 +271,11 @@ const About = props => {
           <StyledSectionFlex id="contact" style={{ flexDirection: 'column' }}>
             <h2 style={{ width: '100%' }}>Contact</h2>
             <p>
-              To get in touch, please email <a href="mailto:admin@kwikswap.org">admin@kwikswap.org</a>
+              To get in touch, please email <a href="mailto:admin@brainaut.net">admin@brainaut.net</a>
             </p>
 
             <p>
-              We encourage anyone facing issues with their wallet, transaction or Kwikswap related question to join our
+              We encourage anyone facing issues with their wallet, transaction or Brainaut related question to join our
               active community discord.
             </p>
 
@@ -302,7 +302,7 @@ const About = props => {
             <h2 style={{ width: '100%' }}>Jobs</h2>
             <p>We are looking for talented people to join our team!</p>
             <p>
-              Kwikswap welcomes all qualified persons to apply regardless of race, religion, gender, gender identity or
+              Brainaut welcomes all qualified persons to apply regardless of race, religion, gender, gender identity or
               expression, sexual orientation, national origin, genetics, disability, age, or veteran status.
               Compensation will be competitive and commensurate with experience. This is a full time role which includes
               health insurance and other benefits.
