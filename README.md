@@ -1,0 +1,3 @@
+# BRAINAUT
+
+`yarn && yarn start`
